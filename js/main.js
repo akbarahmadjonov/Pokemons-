@@ -2,14 +2,11 @@ let elDocRow = document.querySelector(".row");
 
 for (var list of pokemons) {
   let pokCard = document.createElement("div");
-  pokCard.setAttribute(
-    "class",
-    "pokcard text-center m-auto cursor p-3 border-0"
-  );
+  pokCard.setAttribute("class", "pokcard");
 
   let idBox = document.createElement("h4");
   idBox.setAttribute("class", "card-title");
-  idBox.textContent = list.id;
+  idBox.textContent = `${list.id}.`;
   //   Pokemon ID
 
   let nameBox = document.createElement("h3");
@@ -37,12 +34,18 @@ for (var list of pokemons) {
   //   Pokemon birthtime
 
   let cardBody = document.createElement("div");
-  cardBody.setAttribute("class", "card-body");
+  cardBody.setAttribute(
+    "class",
+    "card-body p-3 m-3 text-center col-sm-12 col-md-12 col-lg-6 col-xl-3 col-2xl-4 border border-2 border-dark rounded"
+  );
 
   pokCard.appendChild(imgBox);
   cardBody.appendChild(idBox);
+  cardBody.append(imgBox);
   cardBody.appendChild(nameBox);
   cardBody.appendChild(heightBox);
   cardBody.appendChild(WeightBox);
   cardBody.appendChild(spawnBox);
+
+  elDocRow.appendChild(cardBody);
 }

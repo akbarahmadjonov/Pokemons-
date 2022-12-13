@@ -19,6 +19,25 @@ body {
   margin: 0;
   font-family: "Fraunces 9pt", "Arial", sans-serif;
   background-color: #ffd845;
+  animation: move 5s infinite;
+}
+
+@keyframes move {
+  0% {
+    background-color: #ffd845;
+  }
+  25% {
+    background-color: #dbb325;
+  }
+  50% {
+    background-color: rgb(187, 140, 11) da79;
+  }
+  75% {
+    background-color: rgb(247, 108, 108) da79;
+  }
+  100% {
+    background-color: #e7ed3b;
+  }
 }
 
 main {
@@ -33,4 +52,33 @@ img {
 
 .logo:hover {
   opacity: 0.6;
+}
+
+.card-body img {
+  width: 200px;
+}
+
+.card-body:hover img {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.2);
+}
+
+.card-body:hover {
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.9);
+  background-color: #f8cd34;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 320px) {
+  .card-body img {
+    width: 200px;
+  }
 }
