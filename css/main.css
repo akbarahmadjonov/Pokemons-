@@ -77,8 +77,8 @@ img {
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 320px) {
-  .card-body img {
-    width: 200px;
+@media only screen and (max-width: 1024px) {
+  .logo {
+    width: 100%;
   }
 }
