@@ -128,18 +128,55 @@ elSelect.addEventListener("change", () => {
 
 // Sort
 
-let newSort = [];
-elSelectSort.addEventListener("change", function () {
-  newSort = [];
+// let newSort = [];
+// elSelectSort.addEventListener("change", function () {
+//   newSort = [];
 
-  pokemons.forEach((element) => {
-    newSort.push(element);
-    newSort.sort(
-      (a, b) =>
-        a.name.toUpperCase().charCodeAt(0) - b.name.toUpperCase().charCodeAt(0)
+//   pokemons.forEach((element) => {
+//     newSort.push(element);
+//     newSort.sort(
+//       (a, b) =>
+//         a.name.toUpperCase().charCodeAt(0) - b.name.toUpperCase().charCodeAt(0)
+//     );
+//   });
+
+//   createCardListItem(newSort, elDocRow);
+//   console.log(newSort);
+// });
+
+elSelectSort.addEventListener("change", (evt) => {
+  evt.preventDefault();
+
+  let elSelectSortVal = elSelectSort.value;
+
+  let emptyArr = [];
+  if (elSelectSort.value == "all") {
+    emptyArr = [];
+    pokemons.forEach((el) => {
+      emptyArr.push(el);
+    });
+    createCardListItem(emptyArr, elDocRow);
+  }
+
+  console.log(emptyArr);
+
+  if (elSelectSortVal === "a_z")
+    createCardListItem(
+      pokemons.sort(
+        (a, b) =>
+          a.name.toLowerCase().charCodeAt(0) -
+          b.name.toLowerCase().charCodeAt(0)
+      ),
+      elDocRow
     );
-  });
 
-  createCardListItem(newSort, elDocRow);
-  console.log(newSort);
+  if (elSelectSortVal === "z_a")
+    createCardListItem(
+      pokemons.sort(
+        (a, b) =>
+          b.name.toLowerCase().charCodeAt(0) -
+          a.name.toLowerCase().charCodeAt(0)
+      ),
+      elDocRow
+    );
 });
