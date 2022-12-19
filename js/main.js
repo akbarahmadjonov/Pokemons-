@@ -1,5 +1,23 @@
 let elDocRow = document.querySelector(".row");
 let elSelect = document.querySelector(".form-select");
+let elInput = document.querySelector("input");
+let elSelectSort = document.querySelector(".form-sort");
+
+let newArray = [];
+elInput.addEventListener("input", function (evt) {
+  evt.preventDefault();
+  newArray = [];
+
+  let inputVal = elInput.value;
+
+  pokemons.forEach((el) => {
+    if (el.name.toLowerCase().includes(inputVal)) {
+      newArray.push(el);
+    }
+  });
+  createCardListItem(newArray, elDocRow);
+  console.log(newArray);
+});
 
 function createCardListItem(array, node) {
   elDocRow.innerHTML = "";
@@ -107,3 +125,21 @@ elSelect.addEventListener("change", () => {
 });
 
 // --------------------------------
+
+// Sort
+
+let newSort = [];
+elSelectSort.addEventListener("change", function () {
+  newSort = [];
+
+  pokemons.forEach((element) => {
+    newSort.push(element);
+    newSort.sort(
+      (a, b) =>
+        a.name.toUpperCase().charCodeAt(0) - b.name.toUpperCase().charCodeAt(0)
+    );
+  });
+
+  createCardListItem(newSort, elDocRow);
+  console.log(newSort);
+});

@@ -16,9 +16,18 @@
         <img class="logo mx-auto mt-2 d-block" src="./img/pokemon-logo.png" width="610" height="225" alt="Pokemon">
     </a>
     <div class="container">
-        <select class="form-select mx-auto d-block w-50 mt-5 mb-5 col-6">
-            <option value="All">All</option>
-        </select>
+        <form>
+            <select class="form-select mx-auto d-block w-50 mt-5 mb-2 col-6">
+                <option value="All">All</option>
+            </select>
+            <select class="form-sort form-select mx-auto d-block w-50 mb-2 col-6">
+                <option selected disabled>Sort by</option>
+                <option value="all">All</option>
+                <option value="a_z">a_Z</option>
+                <option value="z_a">Z_a</option>
+            </select>
+            <input class="form-control mx-auto d-block w-50 mb-5" type="search" placeholder="Search pokemons...">
+        </form>
         <div class="row"></div>
     </div>
 
