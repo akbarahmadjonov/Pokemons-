@@ -2,6 +2,30 @@ let elDocRow = document.querySelector(".row");
 let elSelect = document.querySelector(".form-select");
 let elInput = document.querySelector("input");
 let elSelectSort = document.querySelector(".form-sort");
+let elModeBtn = document.querySelector(".mode");
+let elBookmarkBtn = document.querySelector(".form-bookmark");
+let elBookMarkWrapper = document.querySelector(".bookmark-wrapper");
+
+// Dark mode
+let theme = false;
+elModeBtn.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  theme = !theme;
+
+  const bg = theme ? "dark" : "light";
+  window.localStorage.setItem("theme", bg);
+  changeTheme();
+});
+
+function changeTheme() {
+  if (window.localStorage.getItem("theme") == "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+}
+
+// Dark mode
 
 let newArray = [];
 elInput.addEventListener("input", function (evt) {
@@ -180,3 +204,9 @@ elSelectSort.addEventListener("change", (evt) => {
       elDocRow
     );
 });
+
+// Bookmark
+elBookmarkBtn.addEventListener("click", () => {
+  elBookMarkWrapper.classList.toggle("bookmark-wrapper-active");
+});
+// Bookmark
