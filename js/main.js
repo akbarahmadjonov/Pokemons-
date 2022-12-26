@@ -24,6 +24,7 @@ function changeTheme() {
     document.body.classList.remove("dark");
   }
 }
+changeTheme();
 
 // Dark mode
 
