@@ -20,14 +20,15 @@
     </a>
     <div class="bookmark-wrapper shadow-md">
         <h1>Bookmarked lists <i class="fa-solid fa-bookmark"></i></h1>
-        <ul class="list-group"></ul>
+        <ul class="list-group js-book"></ul>
     </div>
     <div class="container">
         <form>
             <button class="mx-auto d-block mode"><img class="mode-img" src="./img/dark-mode.svg"
                     alt="Dark mode"></button>
             <button class="form-bookmark mx-auto d-block p-3 mt-2" type="button">
-                Saved<i class="fa-regular fa-bookmark book-img"></i>
+                <span class="hide-success">Saved</span><i class="fa-regular fa-bookmark book-img"></i>
+                <h4 class="success-bookmark d-none">Added to bookmark list <span class="badge bg-danger">New</span></h4>
             </button>
             <select class="form-select mx-auto d-block w-50 mt-5 mb-2 col-6">
                 <option value="All">All</option>

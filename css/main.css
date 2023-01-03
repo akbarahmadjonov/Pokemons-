@@ -27,7 +27,7 @@ html {
 *::after,
 *::before {
   box-sizing: border-box;
-  transition: all 0.4s ease;
+  transition: all 0.1s ease;
 }
 
 body {
@@ -56,6 +56,16 @@ img {
   border-radius: 10px;
 }
 
+.bookmark-class {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.bookmark-class:hover {
+  color: #fff;
+}
+
 .book-img {
   width: 30px;
   font-size: 25px;
@@ -74,6 +84,7 @@ img {
   /* overflow: auto; */
   border-radius: 10px;
   transition: all 0.5s ease-in-out;
+  overflow: auto;
 }
 
 .bookmark-wrapper-active {

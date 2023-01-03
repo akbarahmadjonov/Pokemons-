@@ -5,6 +5,9 @@ let elSelectSort = document.querySelector(".form-sort");
 let elModeBtn = document.querySelector(".mode");
 let elBookmarkBtn = document.querySelector(".form-bookmark");
 let elBookMarkWrapper = document.querySelector(".bookmark-wrapper");
+let elBookmarkList = document.querySelector(".js-book");
+let hideSuccessBookmark = document.querySelector(".hide-success");
+let elSuccessBookmark = document.querySelector(".success-bookmark");
 
 // Dark mode
 let theme = false;
@@ -88,10 +91,18 @@ function createCardListItem(array, node) {
     let cardBody = document.createElement("div");
     cardBody.setAttribute(
       "class",
-      "card-body p-3 m-3 text-center col-sm-12 col-md-12 col-lg-6 col-xl-3 col-2xl-4 border border-2 border-dark rounded"
+      "card-body position-relative p-3 m-3 text-center col-sm-12 col-md-12 col-lg-6 col-xl-3 col-2xl-4 border border-2 border-dark rounded"
     );
 
+    let newBookMark = document.createElement("button");
+    newBookMark.setAttribute(
+      "class",
+      "border border-0 bg-transparent fs-2 fa-solid fa-bookmark bookmark-class js-bookmark"
+    );
+    newBookMark.dataset.bookId = list.id;
+
     pokCard.appendChild(imgBox);
+    cardBody.appendChild(newBookMark);
     cardBody.appendChild(idBox);
     cardBody.append(imgBox);
     cardBody.appendChild(nameBox);
@@ -211,3 +222,20 @@ elBookmarkBtn.addEventListener("click", () => {
   elBookMarkWrapper.classList.toggle("bookmark-wrapper-active");
 });
 // Bookmark
+let newBookArr = [];
+let sortedBookmarkLists = new Set(newBookArr);
+elDocRow.addEventListener("click", (evt) => {
+  evt.preventDefault();
+
+  if (evt.target.matches(".js-bookmark")) {
+    const getId = evt.target.dataset.bookId;
+    const pocFound = pokemons.find((el) => el.id == getId);
+    sortedBookmarkLists.add(pocFound);
+    const newLiBook = document.createElement("li");
+    newLiBook.setAttribute("class", "list-group-item");
+    newLiBook.textContent = pocFound.name;
+    elBookmarkList.appendChild(newLiBook);
+  }
+  hideSuccessBookmark.classList.add("d-none");
+  elSuccessBookmark.classList.remove("d-none");
+});
