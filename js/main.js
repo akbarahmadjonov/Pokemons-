@@ -222,20 +222,24 @@ elBookmarkBtn.addEventListener("click", () => {
   elBookMarkWrapper.classList.toggle("bookmark-wrapper-active");
 });
 // Bookmark
-let newBookArr = [];
-let sortedBookmarkLists = new Set(newBookArr);
+let newSortArr = [];
 elDocRow.addEventListener("click", (evt) => {
   evt.preventDefault();
 
   if (evt.target.matches(".js-bookmark")) {
     const getId = evt.target.dataset.bookId;
     const pocFound = pokemons.find((el) => el.id == getId);
-    sortedBookmarkLists.add(pocFound);
+    newSortArr.push(pocFound);
+    // newSortArr = new Set(newSortArr);
+    // New sort didn't work properly
     const newLiBook = document.createElement("li");
     newLiBook.setAttribute("class", "list-group-item");
-    newLiBook.textContent = pocFound.name;
+    newLiBook.innerHTML = `Your saved pokemon: <strong>${pocFound.id}. ${pocFound.name}</strong>`;
     elBookmarkList.appendChild(newLiBook);
   }
   hideSuccessBookmark.classList.add("d-none");
   elSuccessBookmark.classList.remove("d-none");
+  window.localStorage.setItem("newSortArr", JSON.stringify(newSortArr));
 });
+
+let bookPoc = JSON.parse(window.localStorage.getItem("newSortArr")) || [];
